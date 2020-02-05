@@ -19,5 +19,8 @@
     "url": "https://github.com/Grigorevv/backend-project-lvl1/issues"
   },
   "homepage": "https://github.com/Grigorevv/backend-project-lvl1#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
 }

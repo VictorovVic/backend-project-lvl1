@@ -1,20 +1,33 @@
 import readlineSync from 'readline-sync';
 
 const toAskName = () => {
-  console.log('Answer "yes" if the number is even, otherwise answer "no".\n');
-  const actual = readlineSync.question('May I have your name? ');
-  return console.log(`Hello, ${actual}!\n`);
+  const playerName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${playerName}!`);
+  return playerName;
 };
 
-const getRandom = () => Math.floor(Math.random() * 100);
+const getRandom = () => {
+  const randAndAnsw = {};
+  const randNum = Math.floor(Math.random() * 100);
+  randAndAnsw.randomNumber = randNum;
+  if (randNum % 2 === 0) randAndAnsw.correctAnswer = 'yes';
+  else randAndAnsw.correctAnswer = 'no';
+  return randAndAnsw;
+};
 
 const isEvenNumber = () => {
+  const answers = {};
+  console.log('Answer "yes" if the number is even, otherwise answer "no".');
   for (let i = 0; i < 3; i += 1) {
-    console.log(`Question: ${getRandom()}`);
-    readlineSync.question('Your answer: ');
+    const { randomNumber, correctAnswer } = getRandom();
+    console.log(`Question: ${randomNumber}`);
+    const answerPlayer = readlineSync.question('Your answer: ');
+    answers.correct = correctAnswer;
+    answers.player = answerPlayer;
+    if (answerPlayer !== correctAnswer) return answers;
     console.log('Correct!');
   }
-  return console.log('Congratulations, SAM!');
+  return answers;
 };
 
 export { toAskName as default, isEvenNumber };

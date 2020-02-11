@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 
-const toAskName = () => { // запрос имени игрока
+const toAskName = () => {
   const playerName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${playerName}!`);
   return playerName;
@@ -8,23 +8,43 @@ const toAskName = () => { // запрос имени игрока
 
 const getRandom = (rangeNumber) => Math.floor(Math.random() * rangeNumber);
 
-const answer = () => { // ответ игрока на вопрос
+const evenOrUneven = (randomNumber) => { // brain-even
+  if (randomNumber % 2 === 0) return 'yes';
+  return 'no';
+};
+
+const resultExpression = (randomNumber1, randomNumber2, sign) => { // brain-calc
+  let result = '';
+  switch (sign) {
+    case '+':
+      result = randomNumber1 + randomNumber2;
+      break;
+    case '-':
+      result = randomNumber1 - randomNumber2;
+      break;
+    case '*':
+      result = randomNumber1 * randomNumber2;
+      break;
+    default:
+      break;
+  }
+  return String(result);
+};
+
+const answer = () => {
   const answerPlayer = readlineSync.question('Your answer: ');
   return answerPlayer;
 };
 
-const gameEngine = (arrQuestionCorrAnswer) => {
-  const arrCorrAnswerAndPlayerAnswer = {};
-  for (let i = 0; i < 3; i += 1) {
-    console.log(`Question: ${arrQuestionCorrAnswer[i].question}`);
-    arrCorrAnswerAndPlayerAnswer.correctAnswer = arrQuestionCorrAnswer[i].correctAnswer;
-    arrCorrAnswerAndPlayerAnswer.answerPlayer = answer();
-    if (arrCorrAnswerAndPlayerAnswer.correctAnswer !== arrCorrAnswerAndPlayerAnswer.answerPlayer) {
-      return arrCorrAnswerAndPlayerAnswer;
-    }
-    console.log('Correct!');
+const checkAnswer = (correctAnswer, playerAnswer, playerName, i) => {
+  if (correctAnswer !== playerAnswer) {
+    console.log(`"${playerAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".\nLet's try again, ${playerName}!`);
+    process.exit(-1);
   }
-  return arrCorrAnswerAndPlayerAnswer;
+  console.log('Correct!');
+  if (i === 2) console.log(`Congratulations, ${playerName}!`);
 };
 
-export { toAskName as default, gameEngine, getRandom };
+export {
+  toAskName as default, getRandom, evenOrUneven, answer, checkAnswer, resultExpression,
+};

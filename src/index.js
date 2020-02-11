@@ -1,33 +1,30 @@
 import readlineSync from 'readline-sync';
 
-const toAskName = () => {
+const toAskName = () => { // запрос имени игрока
   const playerName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${playerName}!`);
   return playerName;
 };
 
-const getRandom = () => {
-  const randAndAnsw = {};
-  const randNum = Math.floor(Math.random() * 100);
-  randAndAnsw.randomNumber = randNum;
-  if (randNum % 2 === 0) randAndAnsw.correctAnswer = 'yes';
-  else randAndAnsw.correctAnswer = 'no';
-  return randAndAnsw;
+const getRandom = (rangeNumber) => Math.floor(Math.random() * rangeNumber);
+
+const answer = () => { // ответ игрока на вопрос
+  const answerPlayer = readlineSync.question('Your answer: ');
+  return answerPlayer;
 };
 
-const isEvenNumber = () => {
-  const answers = {};
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+const gameEngine = (arrQuestionCorrAnswer) => {
+  const arrCorrAnswerAndPlayerAnswer = {};
   for (let i = 0; i < 3; i += 1) {
-    const { randomNumber, correctAnswer } = getRandom();
-    console.log(`Question: ${randomNumber}`);
-    const answerPlayer = readlineSync.question('Your answer: ');
-    answers.correct = correctAnswer;
-    answers.player = answerPlayer;
-    if (answerPlayer !== correctAnswer) return answers;
+    console.log(`Question: ${arrQuestionCorrAnswer[i].question}`);
+    arrCorrAnswerAndPlayerAnswer.correctAnswer = arrQuestionCorrAnswer[i].correctAnswer;
+    arrCorrAnswerAndPlayerAnswer.answerPlayer = answer();
+    if (arrCorrAnswerAndPlayerAnswer.correctAnswer !== arrCorrAnswerAndPlayerAnswer.answerPlayer) {
+      return arrCorrAnswerAndPlayerAnswer;
+    }
     console.log('Correct!');
   }
-  return answers;
+  return arrCorrAnswerAndPlayerAnswer;
 };
 
-export { toAskName as default, isEvenNumber };
+export { toAskName as default, gameEngine, getRandom };

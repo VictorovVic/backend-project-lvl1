@@ -9,8 +9,9 @@ const toAskName = () => {
 const getRandom = (rangeNumber) => Math.floor(Math.random() * rangeNumber);
 
 const gcd = (randomNumber1, randomNumber2) => { // brain-gcd
+  const maxNumber = Math.max(randomNumber1, randomNumber2);
   let resultGcd = 1;
-  for (let i = 2; i < randomNumber1; i += 1) {
+  for (let i = 2; i <= maxNumber; i += 1) {
     if (randomNumber1 % i === 0 && randomNumber2 % i === 0) resultGcd = i;
   }
   return String(resultGcd);

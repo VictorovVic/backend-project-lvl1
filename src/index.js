@@ -8,6 +8,14 @@ const toAskName = () => {
 
 const getRandom = (rangeNumber) => Math.floor(Math.random() * rangeNumber);
 
+const gcd = (randomNumber1, randomNumber2) => { // brain-gcd
+  let resultGcd = 1;
+  for (let i = 2; i < randomNumber1; i += 1) {
+    if (randomNumber1 % i === 0 && randomNumber2 % i === 0) resultGcd = i;
+  }
+  return String(resultGcd);
+};
+
 const evenOrUneven = (randomNumber) => { // brain-even
   if (randomNumber % 2 === 0) return 'yes';
   return 'no';
@@ -46,5 +54,5 @@ const checkAnswer = (correctAnswer, playerAnswer, playerName, i) => {
 };
 
 export {
-  toAskName as default, getRandom, evenOrUneven, answer, checkAnswer, resultExpression,
+  toAskName as default, getRandom, evenOrUneven, answer, checkAnswer, resultExpression, gcd,
 };

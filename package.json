@@ -7,6 +7,7 @@
     "brain-games": "src/bin/brain-games.js",
     "brain-even": "src/bin/brain-even.js",
     "brain-gcd": "src/bin/brain-gcd.js",
+    "brain-progression": "src/bin/brain-progression.js",
     "brain-calc": "src/bin/brain-calc.js"
   },
   "scripts": {

@@ -8,6 +8,14 @@ const toAskName = () => {
 
 const getRandom = (rangeNumber) => Math.floor(Math.random() * rangeNumber);
 
+const progression = (beginProg, step) => { // brain-progression
+  const arrProgression = [];
+  for (let num = beginProg, index = 0; index < 10; index += 1, num += (step + 1)) {
+    arrProgression[index] = num;
+  }
+  return arrProgression;
+};
+
 const gcd = (randomNumber1, randomNumber2) => { // brain-gcd
   const maxNumber = Math.max(randomNumber1, randomNumber2);
   let resultGcd = 1;
@@ -55,5 +63,6 @@ const checkAnswer = (correctAnswer, playerAnswer, playerName, i) => {
 };
 
 export {
-  toAskName as default, getRandom, evenOrUneven, answer, checkAnswer, resultExpression, gcd,
+  toAskName as default, getRandom, evenOrUneven, answer, checkAnswer,
+  resultExpression, gcd, progression,
 };

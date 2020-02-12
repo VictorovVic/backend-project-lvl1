@@ -25,6 +25,13 @@ const gcd = (randomNumber1, randomNumber2) => { // brain-gcd
   return String(resultGcd);
 };
 
+const prime = (randomNumber) => { // brain-prime
+  for (let i = 2; i < randomNumber; i += 1) {
+    if (randomNumber % i === 0) return 'no';
+  }
+  return 'yes';
+};
+
 const evenOrUneven = (randomNumber) => { // brain-even
   if (randomNumber % 2 === 0) return 'yes';
   return 'no';
@@ -64,5 +71,5 @@ const checkAnswer = (correctAnswer, playerAnswer, playerName, i) => {
 
 export {
   toAskName as default, getRandom, evenOrUneven, answer, checkAnswer,
-  resultExpression, gcd, progression,
+  resultExpression, gcd, progression, prime,
 };

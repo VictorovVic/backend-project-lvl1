@@ -4,3 +4,5 @@ BRAIN-EVEN
 [![asciicast](https://asciinema.org/a/VU0Eii6LnUxwS9VZ82V8KkVhf.svg)](https://asciinema.org/a/VU0Eii6LnUxwS9VZ82V8KkVhf)
 BRAIN-CALC
 [![asciicast](https://asciinema.org/a/Su5SYY4ruIe2feMkEGRCs8258.svg)](https://asciinema.org/a/Su5SYY4ruIe2feMkEGRCs8258)
+BRAIN-GCD
+[![asciicast](https://asciinema.org/a/mcqrAz7jV5w7udxCCzClylAiW.svg)](https://asciinema.org/a/mcqrAz7jV5w7udxCCzClylAiW)

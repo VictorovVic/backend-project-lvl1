@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import engine from '../engine.js';
+import gamePrime from '../games/gameprime.js';
 
-const game = 'brain-prime';
-engine(game);
+gamePrime();

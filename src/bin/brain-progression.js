@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import engine from '../engine.js';
+import gameProgression from '../games/gameprogression.js';
 
-const game = 'brain-progression';
-engine(game);
+gameProgression();

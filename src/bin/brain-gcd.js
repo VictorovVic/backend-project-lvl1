@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import engine from '../engine.js';
+import gameGcd from '../games/gamegcd.js';
 
-const game = 'brain-gcd';
-engine(game);
+gameGcd();

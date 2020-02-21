@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import engine from '../engine.js';
+import gameEven from '../games/gameeven.js';
 
-const game = 'brain-even';
-engine(game);
+gameEven();

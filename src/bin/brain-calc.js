@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import engine from '../engine.js';
+import gameCalc from '../games/gamecalc.js';
 
-const game = 'brain-calc';
-engine(game);
+gameCalc();

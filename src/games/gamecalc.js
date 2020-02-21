@@ -4,21 +4,15 @@ const gameCalc = () => {
   const resultExpression = (randomNumber1, randomNumber2, sign) => {
     let result = '';
     switch (sign) {
-      case '+':
-        result = randomNumber1 + randomNumber2;
+      case '+': result = randomNumber1 + randomNumber2;
         break;
-      case '-':
-        result = randomNumber1 - randomNumber2;
+      case '-': result = randomNumber1 - randomNumber2;
         break;
-      case '*':
-        result = randomNumber1 * randomNumber2;
+      case '*': result = randomNumber1 * randomNumber2;
         break;
-      default:
-        break;
-    }
-    return String(result);
+      default: break;
+    } return String(result);
   };
-
   const logicGame = () => {
     const arrSign = ['+', '-', '*'];
     const randomNumber1 = getRandom(100);

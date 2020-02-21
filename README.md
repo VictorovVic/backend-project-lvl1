@@ -2,12 +2,13 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/2e439b84bc25274450e3/test_coverage)](https://codeclimate.com/github/Grigorevv/backend-project-lvl1/test_coverage)
 ![Lint](https://github.com/Grigorevv/backend-project-lvl1/workflows/Lint/badge.svg)
 BRAIN-EVEN
-[![asciicast](https://asciinema.org/a/VU0Eii6LnUxwS9VZ82V8KkVhf.svg)](https://asciinema.org/a/VU0Eii6LnUxwS9VZ82V8KkVhf)
+[![asciicast](https://asciinema.org/a/m7rFxS0kma5qulzEVj6Fl8yyI.svg)](https://asciinema.org/a/m7rFxS0kma5qulzEVj6Fl8yyI)
 BRAIN-CALC
-[![asciicast](https://asciinema.org/a/Su5SYY4ruIe2feMkEGRCs8258.svg)](https://asciinema.org/a/Su5SYY4ruIe2feMkEGRCs8258)
+[![asciicast](https://asciinema.org/a/ebzimb6osKQf60fijBmCPqlMM.svg)](https://asciinema.org/a/ebzimb6osKQf60fijBmCPqlMM)
 BRAIN-GCD
-[![asciicast](https://asciinema.org/a/mcqrAz7jV5w7udxCCzClylAiW.svg)](https://asciinema.org/a/mcqrAz7jV5w7udxCCzClylAiW)
+[![asciicast](https://asciinema.org/a/LTCdAU52MzSNexnrcbwetfTE4.svg)](https://asciinema.org/a/LTCdAU52MzSNexnrcbwetfTE4)
 BRAIN-PROGRESSION
-[![asciicast](https://asciinema.org/a/JF3Qn3sFMYEoqe16EEdvdOf8L.svg)](https://asciinema.org/a/JF3Qn3sFMYEoqe16EEdvdOf8L)
+[![asciicast](https://asciinema.org/a/2b70icMQmCTdedWOVqqWJUw3p.svg)](https://asciinema.org/a/2b70icMQmCTdedWOVqqWJUw3p)
 BRAIN-PRIME
-[![asciicast](https://asciinema.org/a/Y2di9K1wr4jxX758SUBoawzo3.svg)](https://asciinema.org/a/Y2di9K1wr4jxX758SUBoawzo3)
+[![asciicast](https://asciinema.org/a/Om0Rvz9JzfCJS9f0Rd4x73ukR.svg)](https://asciinema.org/a/Om0Rvz9JzfCJS9f0Rd4x73ukR)
+

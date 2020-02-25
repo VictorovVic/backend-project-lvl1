@@ -1,20 +1,18 @@
-import engine, { getRandom, question } from '../index.js';
+import runEngine, { getRandom, askPlayerQuestion } from '../index.js';
 
-const gameEven = () => {
-  const evenOrUneven = (randomNumber) => {
-    if (randomNumber % 2 === 0) return 'yes';
-    return 'no';
-  };
+const questionToPlayer = 'Answer "yes" if the number is even, otherwise answer "no".';
+const isEven = (randomNumber) => randomNumber % 2 === 0;
 
-  const logicGame = () => {
-    const randomNumber = getRandom(100);
-    const correctAnswer = evenOrUneven(randomNumber);
-    question(randomNumber);
+const runGameEven = () => {
+  const getCorrectAswer = () => {
+    const beginRangeRandom = 0;
+    const endRangeRandom = 100;
+    const isEvenNumber = getRandom(beginRangeRandom, endRangeRandom);
+    const correctAnswer = isEven(isEvenNumber) ? 'yes' : 'no';
+    askPlayerQuestion(isEvenNumber);
     return correctAnswer;
   };
-  const stringQuestion = 'Answer "yes" if the number is even, otherwise answer "no".';
-  engine(logicGame, stringQuestion);
+  runEngine(getCorrectAswer, questionToPlayer);
 };
 
-
-export { gameEven as default };
+export { runGameEven as default };

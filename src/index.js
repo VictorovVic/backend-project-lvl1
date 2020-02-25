@@ -1,8 +1,8 @@
 import readlineSync from 'readline-sync';
 
-const getRandom = (rangeNumber) => Math.floor(Math.random() * rangeNumber);
+const getRandom = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-const question = (number) => console.log(`Question: ${number}`);
+const askPlayerQuestion = (number) => console.log(`Question: ${number}`);
 
 const checkAnswer = (correctAnswer, answerPlayer, playerName, i) => {
   if (correctAnswer !== answerPlayer) {
@@ -13,11 +13,11 @@ const checkAnswer = (correctAnswer, answerPlayer, playerName, i) => {
   if (i === 2) console.log(`Congratulations, ${playerName}!`);
 };
 
-const engine = (game, stringQuestion) => {
+const runEngine = (game, questionToPlayer) => {
   console.log('Welcome to the Brain Games!');
   const playerName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${playerName}!`);
-  console.log(stringQuestion);
+  console.log(questionToPlayer);
   for (let i = 0; i < 3; i += 1) {
     const correctAnswer = game();
     const answerPlayer = readlineSync.question('Your answer: ');
@@ -25,4 +25,4 @@ const engine = (game, stringQuestion) => {
   }
 };
 
-export { engine as default, getRandom, question };
+export { runEngine as default, getRandom, askPlayerQuestion };

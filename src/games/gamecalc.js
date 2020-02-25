@@ -1,30 +1,33 @@
-import engine, { getRandom, question } from '../index.js';
+import runEngine, { getRandom, askPlayerQuestion } from '../index.js';
 
-const gameCalc = () => {
-  const resultExpression = (randomNumber1, randomNumber2, sign) => {
-    let result = '';
-    switch (sign) {
-      case '+': result = randomNumber1 + randomNumber2;
-        break;
-      case '-': result = randomNumber1 - randomNumber2;
-        break;
-      case '*': result = randomNumber1 * randomNumber2;
-        break;
-      default: break;
-    } return String(result);
-  };
-  const logicGame = () => {
-    const arrSign = ['+', '-', '*'];
-    const randomNumber1 = getRandom(100);
-    const randomNumber2 = getRandom(100);
-    const sign = arrSign[getRandom(3)];
-    const correctAnswer = resultExpression(randomNumber1, randomNumber2, sign);
-    const expression = `${randomNumber1} ${sign} ${randomNumber2}`;
-    question(expression);
-    return correctAnswer;
-  };
-  const stringQuestion = 'What is the result of the expression?';
-  engine(logicGame, stringQuestion);
+const questionToPlayer = 'What is the result of the expression?';
+const getValueExpression = (randomNumber1, randomNumber2, sign) => {
+  let result = '';
+  switch (sign) {
+    case '+': result = randomNumber1 + randomNumber2;
+      break;
+    case '-': result = randomNumber1 - randomNumber2;
+      break;
+    case '*': result = randomNumber1 * randomNumber2;
+      break;
+    default: break;
+  } return String(result);
 };
 
-export { gameCalc as default };
+const runGameCalc = () => {
+  const getCorrectAswer = () => {
+    const operSelection = ['+', '-', '*'];
+    const beginRangeRandom = 0;
+    const endRangeRandom = 100;
+    const randomNumber1 = getRandom(beginRangeRandom, endRangeRandom);
+    const randomNumber2 = getRandom(beginRangeRandom, endRangeRandom);
+    const signOperation = operSelection[getRandom(beginRangeRandom, operSelection.length - 1)];
+    const correctAnswer = getValueExpression(randomNumber1, randomNumber2, signOperation);
+    const expressionQuestion = `${randomNumber1} ${signOperation} ${randomNumber2}`;
+    askPlayerQuestion(expressionQuestion);
+    return correctAnswer;
+  };
+  runEngine(getCorrectAswer, questionToPlayer);
+};
+
+export { runGameCalc as default };

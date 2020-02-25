@@ -1,26 +1,30 @@
-import engine, { getRandom, question } from '../index.js';
+import runEngine, { getRandom, askPlayerQuestion } from '../index.js';
 
-const gameProgression = () => {
-  const progression = (beginProg, step) => {
-    const arrProgression = [];
-    for (let num = beginProg, index = 0; index < 10; index += 1, num += (step + 1)) {
-      arrProgression[index] = num;
-    }
-    return arrProgression;
-  };
-
-  const logicGame = () => {
-    const beginProg = getRandom(100);
-    const stepProg = getRandom(10);
-    const hiddenNumber = getRandom(9);
-    const expression = progression(beginProg, stepProg);
-    const correctAnswer = String(expression[hiddenNumber]);
-    expression[hiddenNumber] = '..';
-    question(expression.join(' '));
-    return correctAnswer;
-  };
-  const stringQuestion = 'What number is missing in the progression?';
-  engine(logicGame, stringQuestion);
+const questionToPlayer = 'What number is missing in the progression?';
+const getProgression = (beginProg, diff) => {
+  const progression = [];
+  for (let i = 0; i < 10; i += 1) {
+    progression[i] = beginProg + diff * i;
+  }
+  return progression;
 };
 
-export { gameProgression as default };
+const runGameProgression = () => {
+  const getCorrectAswer = () => {
+    const beginRangeRandom = 0;
+    const endRangeRandom = 100;
+    const beginRangeRandomStep = 0;
+    const endRangeRandomStep = 10;
+    const beginProg = getRandom(beginRangeRandom, endRangeRandom);
+    const diffProg = getRandom(beginRangeRandomStep, endRangeRandomStep);
+    const hiddenNumber = getRandom(beginRangeRandomStep, endRangeRandomStep);
+    const progression = getProgression(beginProg, diffProg);
+    const correctAnswer = String(progression[hiddenNumber]);
+    progression[hiddenNumber] = '..';
+    askPlayerQuestion(progression.join(' '));
+    return correctAnswer;
+  };
+  runEngine(getCorrectAswer, questionToPlayer);
+};
+
+export { runGameProgression as default };

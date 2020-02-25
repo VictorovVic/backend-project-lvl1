@@ -11,10 +11,8 @@ const getGcd = (randomNumber1, randomNumber2) => {
 };
 const runGameGcd = () => {
   const getCorrectAswer = () => {
-    const beginRangeRandom = 0;
-    const endRangeRandom = 100;
-    const randomNumber1 = getRandom(beginRangeRandom, endRangeRandom);
-    const randomNumber2 = getRandom(beginRangeRandom, endRangeRandom);
+    const randomNumber1 = getRandom();
+    const randomNumber2 = getRandom();
     const correctAnswer = getGcd(randomNumber1, randomNumber2);
     const expressionQuestion = `${randomNumber1} ${randomNumber2}`;
     askPlayerQuestion(expressionQuestion);

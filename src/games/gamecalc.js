@@ -17,11 +17,9 @@ const getValueExpression = (randomNumber1, randomNumber2, sign) => {
 const runGameCalc = () => {
   const getCorrectAswer = () => {
     const operSelection = ['+', '-', '*'];
-    const beginRangeRandom = 0;
-    const endRangeRandom = 100;
-    const randomNumber1 = getRandom(beginRangeRandom, endRangeRandom);
-    const randomNumber2 = getRandom(beginRangeRandom, endRangeRandom);
-    const signOperation = operSelection[getRandom(beginRangeRandom, operSelection.length - 1)];
+    const randomNumber1 = getRandom();
+    const randomNumber2 = getRandom();
+    const signOperation = operSelection[getRandom(0, operSelection.length - 1)];
     const correctAnswer = getValueExpression(randomNumber1, randomNumber2, signOperation);
     const expressionQuestion = `${randomNumber1} ${signOperation} ${randomNumber2}`;
     askPlayerQuestion(expressionQuestion);

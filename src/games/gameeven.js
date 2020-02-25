@@ -5,9 +5,7 @@ const isEven = (randomNumber) => randomNumber % 2 === 0;
 
 const runGameEven = () => {
   const getCorrectAswer = () => {
-    const beginRangeRandom = 0;
-    const endRangeRandom = 100;
-    const isEvenNumber = getRandom(beginRangeRandom, endRangeRandom);
+    const isEvenNumber = getRandom();
     const correctAnswer = isEven(isEvenNumber) ? 'yes' : 'no';
     askPlayerQuestion(isEvenNumber);
     return correctAnswer;

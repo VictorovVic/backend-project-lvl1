@@ -11,11 +11,9 @@ const getProgression = (beginProg, diff) => {
 
 const runGameProgression = () => {
   const getCorrectAswer = () => {
-    const beginRangeRandom = 0;
-    const endRangeRandom = 100;
     const beginRangeRandomStep = 0;
     const endRangeRandomStep = 10;
-    const beginProg = getRandom(beginRangeRandom, endRangeRandom);
+    const beginProg = getRandom();
     const diffProg = getRandom(beginRangeRandomStep, endRangeRandomStep);
     const hiddenNumber = getRandom(beginRangeRandomStep, endRangeRandomStep);
     const progression = getProgression(beginProg, diffProg);

@@ -10,9 +10,7 @@ const isPrime = (randomNumber) => {
 
 const runGamePrime = () => {
   const getCorrectAswer = () => {
-    const beginRangeRandom = 0;
-    const endRangeRandom = 100;
-    const isPrimeNumber = getRandom(beginRangeRandom, endRangeRandom);
+    const isPrimeNumber = getRandom();
     const correctAnswer = isPrime(isPrimeNumber) ? 'yes' : 'no';
     askPlayerQuestion(isPrimeNumber);
     return correctAnswer;

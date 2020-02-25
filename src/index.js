@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 
-const getRandom = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+const getRandom = (min = 0, max = 100) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 const askPlayerQuestion = (number) => console.log(`Question: ${number}`);
 

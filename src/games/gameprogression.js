@@ -10,7 +10,7 @@ const getProgression = (beginProg, diff) => {
 };
 
 const runGameProgression = () => {
-  const getCorrectAswer = () => {
+  const getCorrectAnswer = () => {
     const beginRangeRandomStep = 0;
     const endRangeRandomStep = 10;
     const beginProg = getRandom();
@@ -22,7 +22,7 @@ const runGameProgression = () => {
     askPlayerQuestion(progression.join(' '));
     return correctAnswer;
   };
-  runEngine(getCorrectAswer, questionToPlayer);
+  runEngine(getCorrectAnswer, questionToPlayer);
 };
 
 export { runGameProgression as default };

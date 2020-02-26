@@ -15,7 +15,7 @@ const getValueExpression = (randomNumber1, randomNumber2, sign) => {
 };
 
 const runGameCalc = () => {
-  const getCorrectAswer = () => {
+  const getCorrectAnswer = () => {
     const operSelection = ['+', '-', '*'];
     const randomNumber1 = getRandom();
     const randomNumber2 = getRandom();
@@ -25,7 +25,7 @@ const runGameCalc = () => {
     askPlayerQuestion(expressionQuestion);
     return correctAnswer;
   };
-  runEngine(getCorrectAswer, questionToPlayer);
+  runEngine(getCorrectAnswer, questionToPlayer);
 };
 
 export { runGameCalc as default };

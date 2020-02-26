@@ -10,7 +10,7 @@ const getGcd = (randomNumber1, randomNumber2) => {
   return gcd;
 };
 const runGameGcd = () => {
-  const getCorrectAswer = () => {
+  const getCorrectAnswer = () => {
     const randomNumber1 = getRandom();
     const randomNumber2 = getRandom();
     const correctAnswer = getGcd(randomNumber1, randomNumber2);
@@ -18,7 +18,7 @@ const runGameGcd = () => {
     askPlayerQuestion(expressionQuestion);
     return String(correctAnswer);
   };
-  runEngine(getCorrectAswer, questionToPlayer);
+  runEngine(getCorrectAnswer, questionToPlayer);
 };
 
 export { runGameGcd as default };

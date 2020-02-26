@@ -1,4 +1,4 @@
-import runEngine, { getRandom, askPlayerQuestion } from '../index.js';
+import runEngine, { getRandom, askPlayerQuestion, getYesOrNo } from '../index.js';
 
 const questionToPlayer = 'Answer "yes" if the number is prime, otherwise answer "no".';
 const isPrime = (randomNumber) => {
@@ -9,13 +9,13 @@ const isPrime = (randomNumber) => {
 };
 
 const runGamePrime = () => {
-  const getCorrectAswer = () => {
+  const getCorrectAnswer = () => {
     const isPrimeNumber = getRandom();
-    const correctAnswer = isPrime(isPrimeNumber) ? 'yes' : 'no';
+    const correctAnswer = getYesOrNo(isPrime(isPrimeNumber));
     askPlayerQuestion(isPrimeNumber);
     return correctAnswer;
   };
-  runEngine(getCorrectAswer, questionToPlayer);
+  runEngine(getCorrectAnswer, questionToPlayer);
 };
 
 export { runGamePrime as default };

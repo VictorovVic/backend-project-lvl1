@@ -4,7 +4,12 @@ const getRandom = (min = 0, max = 100) => Math.floor(Math.random() * (max - min 
 
 const askPlayerQuestion = (number) => console.log(`Question: ${number}`);
 
-const getYesOrNo = (number) => (number ? 'yes' : 'no');
+const getAnswer = (func) => {
+  const numberQuestion = getRandom();
+  const correctAnswer = func(numberQuestion);
+  askPlayerQuestion(numberQuestion);
+  return (correctAnswer ? 'yes' : 'no');
+};
 
 const checkAnswer = (correctAnswer, answerPlayer, playerName, i) => {
   if (correctAnswer !== answerPlayer) {
@@ -28,5 +33,5 @@ const runEngine = (game, questionToPlayer) => {
 };
 
 export {
-  runEngine as default, getRandom, askPlayerQuestion, getYesOrNo,
+  runEngine as default, getRandom, askPlayerQuestion, getAnswer,
 };

@@ -2,36 +2,31 @@ import readlineSync from 'readline-sync';
 
 const getRandom = (min = 0, max = 100) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-const askPlayerQuestion = (number) => console.log(`Question: ${number}`);
-
-const getAnswer = (func) => {
-  const numberQuestion = getRandom();
-  const correctAnswer = func(numberQuestion);
-  askPlayerQuestion(numberQuestion);
-  return (correctAnswer ? 'yes' : 'no');
+const getAnswer = (number) => {
+  const correctAnswer = number ? 'yes' : 'no';
+  return correctAnswer;
 };
 
-const checkAnswer = (correctAnswer, answerPlayer, playerName, i) => {
-  if (correctAnswer !== answerPlayer) {
-    console.log(`"${answerPlayer}" is wrong answer ;(. Correct answer was "${correctAnswer}".\nLet's try again, ${playerName}!`);
-    process.exit(-1);
-  }
-  console.log('Correct!');
-  if (i === 2) console.log(`Congratulations, ${playerName}!`);
-};
-
-const runEngine = (game, questionToPlayer) => {
+const runEngine = (game, questionGame) => {
   console.log('Welcome to the Brain Games!');
+  let isWin = true;
   const playerName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${playerName}!`);
-  console.log(questionToPlayer);
+  console.log(questionGame);
   for (let i = 0; i < 3; i += 1) {
-    const correctAnswer = game();
+    const questionAndCorrectAnswer = game();
+    console.log(`Question: ${questionAndCorrectAnswer.questionToPlayer}`);
     const answerPlayer = readlineSync.question('Your answer: ');
-    checkAnswer(correctAnswer, answerPlayer, playerName, i);
+    if (questionAndCorrectAnswer.correctAnswer === answerPlayer) console.log('Correct!');
+    else {
+      isWin = false;
+      console.log(`"${answerPlayer}" is wrong answer ;(. Correct answer was "${questionAndCorrectAnswer.correctAnswer}".\nLet's try again, ${playerName}!`);
+      break;
+    }
   }
+  if (isWin) console.log(`Congratulations, ${playerName}!`);
 };
 
 export {
-  runEngine as default, getRandom, askPlayerQuestion, getAnswer,
+  runEngine as default, getRandom, getAnswer,
 };

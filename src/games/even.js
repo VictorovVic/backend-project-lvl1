@@ -1,18 +1,19 @@
-import runEngine, { getAnswer, getRandom } from '../index.js';
+import startResponseProcessing from '../index.js';
+import getRandom from '../random.js';
 
-const questionGame = 'Answer "yes" if the number is even, otherwise answer "no".';
+const description = 'Answer "yes" if the number is even, otherwise answer "no".';
+
 const isEven = (randNum) => randNum % 2 === 0;
 
-const runGameEven = () => {
+const getCorrectAnswer = () => {
   const questionAndCorrectAnswer = {};
-  const getCorrectAnswer = () => {
-    const questionToPlayer = getRandom();
-    const correctAnswer = isEven(questionToPlayer);
-    questionAndCorrectAnswer.questionToPlayer = questionToPlayer;
-    questionAndCorrectAnswer.correctAnswer = getAnswer(correctAnswer);
-    return questionAndCorrectAnswer;
-  };
-  runEngine(getCorrectAnswer, questionGame);
+  const questionToPlayer = getRandom();
+  const correctAnswer = isEven(questionToPlayer) ? 'yes' : 'no';
+  questionAndCorrectAnswer.questionToPlayer = questionToPlayer;
+  questionAndCorrectAnswer.correctAnswer = correctAnswer;
+  return questionAndCorrectAnswer;
 };
+
+const runGameEven = () => startResponseProcessing(getCorrectAnswer, description);
 
 export { runGameEven as default };

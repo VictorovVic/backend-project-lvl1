@@ -1,6 +1,7 @@
-import runEngine, { getAnswer, getRandom } from '../index.js';
+import startResponseProcessing from '../index.js';
+import getRandom from '../random.js';
 
-const questionGame = 'Answer "yes" if the number is prime, otherwise answer "no".';
+const description = 'Answer "yes" if the number is prime, otherwise answer "no".';
 
 const isPrime = (randNum) => {
   if (randNum < 2) return false;
@@ -10,16 +11,15 @@ const isPrime = (randNum) => {
   return true;
 };
 
-const runGamePrime = () => {
+const getCorrectAnswer = () => {
   const questionAndCorrectAnswer = {};
-  const getCorrectAnswer = () => {
-    const questionToPlayer = getRandom();
-    const correctAnswer = isPrime(questionToPlayer);
-    questionAndCorrectAnswer.questionToPlayer = questionToPlayer;
-    questionAndCorrectAnswer.correctAnswer = getAnswer(correctAnswer);
-    return questionAndCorrectAnswer;
-  };
-  runEngine(getCorrectAnswer, questionGame);
+  const questionToPlayer = getRandom();
+  const correctAnswer = isPrime(questionToPlayer) ? 'yes' : 'no';
+  questionAndCorrectAnswer.questionToPlayer = questionToPlayer;
+  questionAndCorrectAnswer.correctAnswer = correctAnswer;
+  return questionAndCorrectAnswer;
 };
+
+const runGamePrime = () => startResponseProcessing(getCorrectAnswer, description);
 
 export { runGamePrime as default };

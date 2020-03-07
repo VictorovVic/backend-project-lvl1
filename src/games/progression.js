@@ -1,6 +1,8 @@
-import runEngine, { getRandom } from '../index.js';
+import startResponseProcessing from '../index.js';
+import getRandom from '../random.js';
 
-const questionGame = 'What number is missing in the progression?';
+const description = 'What number is missing in the progression?';
+
 const getProgression = (beginProg, diff) => {
   const progression = [];
   const progressionLength = 10;
@@ -10,22 +12,19 @@ const getProgression = (beginProg, diff) => {
   return progression;
 };
 
-const runGameProgression = () => {
+const getCorrectAnswer = () => {
   const questionAndCorrectAnswer = {};
-  const getCorrectAnswer = () => {
-    const beginRangeRandomStep = 1;
-    const endRangeRandomStep = 9;
-    const beginProgression = getRandom();
-    const diffProgression = getRandom(beginRangeRandomStep, endRangeRandomStep);
-    const indexHiddenNumber = getRandom(beginRangeRandomStep, endRangeRandomStep);
-    const progression = getProgression(beginProgression, diffProgression);
-    const correctAnswer = String(progression[indexHiddenNumber]);
-    progression[indexHiddenNumber] = '..';
-    questionAndCorrectAnswer.questionToPlayer = progression.join(' ');
-    questionAndCorrectAnswer.correctAnswer = correctAnswer;
-    return questionAndCorrectAnswer;
-  };
-  runEngine(getCorrectAnswer, questionGame);
+  const beginProgression = getRandom();
+  const diffProgression = getRandom();
+  const progression = getProgression(beginProgression, diffProgression);
+  const hiddenNumberIndex = getRandom(0, progression.length - 1);
+  const correctAnswer = String(progression[hiddenNumberIndex]);
+  progression[hiddenNumberIndex] = '..';
+  questionAndCorrectAnswer.questionToPlayer = progression.join(' ');
+  questionAndCorrectAnswer.correctAnswer = correctAnswer;
+  return questionAndCorrectAnswer;
 };
+
+const runGameProgression = () => startResponseProcessing(getCorrectAnswer, description);
 
 export { runGameProgression as default };

@@ -1,32 +1,29 @@
 import readlineSync from 'readline-sync';
 
-const getRandom = (min = 0, max = 100) => Math.floor(Math.random() * (max - min + 1)) + min;
+const getAnswerPlayer = () => readlineSync.question('Your answer: ');
 
-const getAnswer = (number) => {
-  const correctAnswer = number ? 'yes' : 'no';
-  return correctAnswer;
+const finishGame = (answerPlayer, correctAnswer, name) => {
+  console.log(`"${answerPlayer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
+  console.log(`Let's try again, ${name}!`);
 };
 
-const runEngine = (game, questionGame) => {
-  console.log('Welcome to the Brain Games!');
-  let isWin = true;
-  const playerName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${playerName}!`);
-  console.log(questionGame);
-  for (let i = 0; i < 3; i += 1) {
+console.log('Welcome to the Brain Games!');
+const playerName = readlineSync.question('May I have your name? ');
+console.log(`Hello, ${playerName}!`);
+
+const startResponseProcessing = (game, description) => {
+  console.log(description);
+  const numberOfQuestion = 3;
+  for (let i = 0; i < numberOfQuestion; i += 1) {
     const questionAndCorrectAnswer = game();
     console.log(`Question: ${questionAndCorrectAnswer.questionToPlayer}`);
-    const answerPlayer = readlineSync.question('Your answer: ');
-    if (questionAndCorrectAnswer.correctAnswer === answerPlayer) console.log('Correct!');
-    else {
-      isWin = false;
-      console.log(`"${answerPlayer}" is wrong answer ;(. Correct answer was "${questionAndCorrectAnswer.correctAnswer}".\nLet's try again, ${playerName}!`);
-      break;
+    const answerPlayer = getAnswerPlayer();
+    if (questionAndCorrectAnswer.correctAnswer !== answerPlayer) {
+      return finishGame(answerPlayer, questionAndCorrectAnswer.correctAnswer, playerName);
     }
+    console.log('Correct!');
   }
-  if (isWin) console.log(`Congratulations, ${playerName}!`);
+  return console.log(`Congratulations, ${playerName}!`);
 };
 
-export {
-  runEngine as default, getRandom, getAnswer,
-};
+export { startResponseProcessing as default };

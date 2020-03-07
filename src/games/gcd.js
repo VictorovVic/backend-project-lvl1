@@ -1,6 +1,8 @@
-import runEngine, { getRandom } from '../index.js';
+import startResponseProcessing from '../index.js';
+import getRandom from '../random.js';
 
-const questionGame = 'Find the greatest common divisor of given numbers.';
+const description = 'Find the greatest common divisor of given numbers.';
+
 const getGcd = (randNum1, randNum2) => {
   const maxNumb = Math.max(randNum1, randNum2);
   let gcd = 1;
@@ -9,16 +11,16 @@ const getGcd = (randNum1, randNum2) => {
   }
   return gcd;
 };
-const runGameGcd = () => {
+
+const getCorrectAnswer = () => {
   const questionAndCorrectAnswer = {};
-  const getCorrectAnswer = () => {
-    const randNum1 = getRandom();
-    const randNum2 = getRandom();
-    questionAndCorrectAnswer.questionToPlayer = `${randNum1} ${randNum2}`;
-    questionAndCorrectAnswer.correctAnswer = String(getGcd(randNum1, randNum2));
-    return questionAndCorrectAnswer;
-  };
-  runEngine(getCorrectAnswer, questionGame);
+  const randNum1 = getRandom();
+  const randNum2 = getRandom();
+  questionAndCorrectAnswer.questionToPlayer = `${randNum1} ${randNum2}`;
+  questionAndCorrectAnswer.correctAnswer = String(getGcd(randNum1, randNum2));
+  return questionAndCorrectAnswer;
 };
+
+const runGameGcd = () => startResponseProcessing(getCorrectAnswer, description);
 
 export { runGameGcd as default };

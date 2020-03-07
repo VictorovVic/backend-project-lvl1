@@ -7,7 +7,7 @@
 $ make install
 ```
 
-## Run
+## Run games
 
 ```sh
 $ brain-even

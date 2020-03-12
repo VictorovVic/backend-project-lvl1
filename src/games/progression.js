@@ -1,11 +1,11 @@
-import startResponseProcessing from '../index.js';
+import engine from '../index.js';
 import getRandom from '../random.js';
 
 const description = 'What number is missing in the progression?';
+const progressionLength = 10;
 
 const getProgression = (beginProg, diff) => {
   const progression = [];
-  const progressionLength = 10;
   for (let i = 0; i < progressionLength; i += 1) {
     progression[i] = beginProg + diff * i;
   }
@@ -13,18 +13,16 @@ const getProgression = (beginProg, diff) => {
 };
 
 const getCorrectAnswer = () => {
-  const questionAndCorrectAnswer = {};
   const beginProgression = getRandom();
   const diffProgression = getRandom();
   const progression = getProgression(beginProgression, diffProgression);
-  const hiddenNumberIndex = getRandom(0, progression.length - 1);
+  const hiddenNumberIndex = getRandom(0, progressionLength);
   const correctAnswer = String(progression[hiddenNumberIndex]);
   progression[hiddenNumberIndex] = '..';
-  questionAndCorrectAnswer.questionToPlayer = progression.join(' ');
-  questionAndCorrectAnswer.correctAnswer = correctAnswer;
-  return questionAndCorrectAnswer;
+  const question = progression.join(' ');
+  return { question, correctAnswer };
 };
 
-const runGameProgression = () => startResponseProcessing(getCorrectAnswer, description);
+const runGameProgression = () => engine(getCorrectAnswer, description);
 
 export { runGameProgression as default };

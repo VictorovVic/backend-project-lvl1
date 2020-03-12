@@ -1,4 +1,4 @@
-import startResponseProcessing from '../index.js';
+import engine from '../index.js';
 import getRandom from '../random.js';
 
 const description = 'What is the result of the expression?';
@@ -18,16 +18,15 @@ const calculate = (randNum1, randNum2, sign) => {
 };
 
 const getCorrectAnswer = () => {
-  const questionAndCorrectAnswer = {};
-  const signsCalculate = ['+', '-', '*'];
+  const signs = ['+', '-', '*'];
   const randNum1 = getRandom();
   const randNum2 = getRandom();
-  const signOperation = signsCalculate[getRandom(0, signsCalculate.length - 1)];
-  questionAndCorrectAnswer.questionToPlayer = (`${randNum1} ${signOperation} ${randNum2}`);
-  questionAndCorrectAnswer.correctAnswer = String(calculate(randNum1, randNum2, signOperation));
-  return questionAndCorrectAnswer;
+  const signOperation = signs[getRandom(0, signs.length - 1)];
+  const question = (`${randNum1} ${signOperation} ${randNum2}`);
+  const correctAnswer = String(calculate(randNum1, randNum2, signOperation));
+  return { question, correctAnswer };
 };
 
-const runGameCalc = () => startResponseProcessing(getCorrectAnswer, description);
+const runGameCalc = () => engine(getCorrectAnswer, description);
 
 export { runGameCalc as default };
